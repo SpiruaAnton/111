@@ -1,0 +1,50 @@
+import java.io.File;
+import java.util.*;
+abstract  public class Reader {
+	static String[][] m = new String[6][3];
+	static Scanner scn;
+	static float   r;
+	static float  x;
+	static int h;
+	static String a, b, z;
+	
+	public static void main(String args[]){
+		openFile();
+		readfile();
+			System.out.println("Введите значение исходной валюты");
+			Scanner scn = new Scanner(System.in);
+			a = scn.next();
+			System.out.println("Введите значение конечной валюты");
+			b = scn.next();
+			System.out.println("Сумма");
+			z = scn.next();
+			scn.close();	
+			 do {
+	             h=h+1;   
+	              
+			 } while (a.equals(m[h-1][0]) && b.equals(m[h-1][1]));
+			
+x =  (Float.valueOf(m[h-1][2])).floatValue();//расчет финал 
+r = (Float.valueOf(z)).floatValue();//расчет финал 
+r = r *x;//расчет финал 
+System.out.print("И того  " + a + "-"+ b + "  "+ r); //вывод фиал
+			
+		}
+		
+	private static void readfile() {
+		while(scn.hasNext()){
+			for(int row=0;row<m.length;row++){
+				for(int col=0;col<m[row].length;col++){
+					m[row][col] = scn.next();
+				}
+			}
+		}
+	}
+
+	private static void openFile() {
+		try{
+			scn = new Scanner(new File("res//1.txt"));
+		}catch(Exception e){System.out.println("файл не найден");}
+		
+	}
+}
